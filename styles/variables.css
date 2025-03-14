@@ -1,13 +1,15 @@
-/* Переменных в исходном состоянии */
+/* Переменные в исходном состоянии */
 :root {
-	--main-font: 'Inter-Variable';
-	--accent-font: 'PressStart2P';
-	--title-font-weight: 700;
-	--card-font-weight: 400;
+  --main-font: "Inter-Variable";
+  --accent-font: "PressStart2P";
+  --title-font-weight: 700;
+  --card-font-weight: 400;
   --outline-color: #fff;
   --heart-fill-color: #f00;
   --heart-frame-color: #000;
   --transition: 0.3s ease;
   --border-black: 2px solid #000;
   --bg-white: #fff;
+  --fill-button-color: #000;
+  --white-button-text: #fff;
 }

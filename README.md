@@ -1,4 +1,9 @@
+# ссылка на репозиторий
+
 https://github.com/Dzmitryuser/zakrivayuschiy-teg-f.git
+
+# Ссылка GitHub Pages
+https://dzmitryuser.github.io/zakrivayuschiy-teg-f/
 
 # Название проекта
 закрывающий тег

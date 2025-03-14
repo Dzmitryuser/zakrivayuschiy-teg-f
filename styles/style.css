@@ -30,8 +30,6 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 /* Задаем стили для хедера*/
@@ -47,6 +45,14 @@
   background-color: var(--bg-white);
   inline-size: 100%;
   min-block-size: 364px;
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo-link:focus {
+  outline: none;
 }
 
 .main-header-title {
@@ -76,7 +82,7 @@
 }
 
 .card-title {
-  font-weight: 700;
+  font-variation-settings: "wght" var(--title-font-weight);
   font-size: 18px;
   margin: 4px 10px 6px 10px;
 }
@@ -84,6 +90,9 @@
 .card-image {
   inline-size: 100%;
   display: block;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card-description {
@@ -160,6 +169,51 @@
   }
 }
 
+/*Задаем общие стили для кнопок*/
+
+.button {
+  position: relative;
+  border: var(--border-black);
+  background-color: var(--bg-white);
+  font-family: var(--accent-font), serif;
+  font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+  font-weight: var(--font-weight-static);
+  appearance: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-color: var(--fill-button-color);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0px 0px var(--fill-button-color);
+}
+
+.button__text {
+  position: relative;
+  z-index: 20;
+  display: block;
+  mix-blend-mode: difference;
+  color: var(--white-button-text);
+}
+
 /* Задаем стили для кнопки с сердечком*/
 .card__buttons {
   position: relative;
@@ -186,37 +240,13 @@
 
 .card__icon-button:focus-visible {
   outline: none;
+  border-color: var(--heart-frame-color);
 }
 
 .card__like-button {
   inline-size: 130px;
   block-size: 38px;
-  border: var(--border-black);
-  background-color: transparent;
-  font-family: var(--accent-font), serif;
-  font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
   align-self: center;
-}
-
-.card__like-button:hover {
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.3s linear 0.03s;
-}
-
-.card__like-button:focus-visible {
-  box-shadow: 2px 2px 0px #000;
-  outline: none;
-}
-
-/* Задаем стили для футура*/
-.footer {
-  inline-size: 100%;
-  background-color: var(--bg-white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Задаем стили для кнопки сохранения*/
@@ -226,36 +256,15 @@
   justify-content: center;
   gap: 8px;
   padding: 15px 0 15px 0;
-  background-color: var(--bg-white);
   inline-size: 335px;
-  font-family: var(--accent-font), serif;
-  font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
-  border: var(--border-black);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   margin-block-end: 105px;
   margin-block-start: 52px;
 }
 
-.save-button:hover {
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.3s linear 0.03s;
-}
-
 .save-button:hover .floppy-wraper {
-  transition: 0.3s linear 0.03s;
   filter: invert(1);
-}
-
-.save-button:focus {
-  outline: none;
-}
-
-.save-button:focus-visible {
-  border-color: var(--content-color);
-  transition: var(--transition);
-  box-shadow: 2px 2px 0px #000;
-  outline: none;
 }
 
 .floppy-wraper {
@@ -277,6 +286,8 @@
 /* Задаем стили для окна диалога*/
 .dialog {
   font-family: var(--accent-font), serif;
+  text-transform: uppercase;
+  line-height: 150%;
   font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
   background-color: var(--bg-white);
   inline-size: 353px;
@@ -297,7 +308,7 @@
   min-block-size: 191px;
   block-size: 100%;
   inline-size: 100%;
-  padding: 30px 30px 30px 30px;
+  padding: 30px;
 }
 
 .dialog-floppy {
@@ -307,7 +318,7 @@
 .dialog__button {
   inline-size: 293px;
   block-size: 38px;
-  border: var(--border-black);
+  text-transform: uppercase;
 }
 
 .dialog__content {
@@ -318,25 +329,14 @@
   block-size: 63px;
 }
 
-.dialog__button:hover {
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.3s linear 0.03s;
-}
-
-.dialog__button:focus {
-  outline: none;
-}
-
-.dialog__button:focus-visible {
-  border-color: var(--content-color);
-  transition: var(--transition);
-  box-shadow: 2px 2px 0px #000;
-  outline: none;
-}
-
 /* Адаптируем под мобильные устройства*/
+
+@media (width <=390px) {
+  .page {
+    inline-size: 100%;
+  }
+}
+
 @media (width <= 375px) {
   .page {
     inline-size: 100%;
@@ -354,7 +354,7 @@
 
   .save-button {
     flex-direction: column;
-    inline-size: 310px;
+    max-inline-size: 310px;
   }
 
   .floppy-wraper {
