@@ -56,7 +56,6 @@
 }
 
 .logo-link:focus-visible {
-  outline: none;
   border: 2px solid var(--link-frame-color);
 }
 
